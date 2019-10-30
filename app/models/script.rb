@@ -11,7 +11,7 @@ championship.name = "Premier Liga"
 championship.save
 club = Club.new
 club.name = "Barcelona"
-club.campionship_id = 1
+club.championship_id = 1
 club.save
 player = Player.new
 player.name = "Messi"
@@ -25,7 +25,7 @@ referee.name = "Августин"
 referee.save
 second_club = Club.new
 club.name = "Real Madrid"
-club.campionship_id = 1
+club.championship_id = 1
 club.save
 match = Match.new
 match.second_club_id = 2
