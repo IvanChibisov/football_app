@@ -7,6 +7,14 @@ class PositionValidator < ActiveModel::Validator
 end
 
 class Country < ApplicationRecord
+  attr_accessor :name, :continent, :championship_id, :position_in_country_table
   validates :name, presence: true, length: { minimum: 3 }, uniqueness: true
   validates_with PositionValidator
+
+  def initialize(name: 'Ivan', continent: 'Europa', championship_id: '200', position_in_country_table: 1)
+    @name = name
+    @continent = continent
+    @championship_id = championship_id
+    @position_in_country_table = position_in_country_table
+  end
 end
