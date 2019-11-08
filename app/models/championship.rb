@@ -13,10 +13,11 @@ class Championship < ApplicationRecord
   validates_with PositionForChampionShipValidator
   validates :position_in_top, uniqueness: true, presence: true
 
-  def initialize(style)
-    @name = style.fetch(:name, 'Liga')
-    @position_in_top = style.fetch(:position_in_top, 1)
-    @country_id = style.fetch(:country_id, 1)
+  belong_to :country
+  has_many :clubs
+  
+  before_save do
+    self.name = 'Liga' if name.blank?
   end
 
   #before_create do

@@ -3,13 +3,11 @@ class Club < ApplicationRecord
   validates :name, length: { minimum: 2 }, presence: true, uniqueness: true
   validates :championship_id, presence: true
 
-  before_create do
+  has_one :coach
+  belong_to :championship
+  has_many :players
+
+  before_save do
     self.coach_id = 1 if coach_id.blank?
-  end
-  
-  def initialize(style)
-    @coach_id = style.fetch(:coach_id, 1)
-    @name = style.fetch(:name, "Default Club")
-    @championship_id = style.fetch(:championship_id, 1)
   end
 end
